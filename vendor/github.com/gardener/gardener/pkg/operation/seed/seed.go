@@ -1081,6 +1081,11 @@ func GetWildcardCertificate(ctx context.Context, c client.Client) (*corev1.Secre
 	return nil, nil
 }
 
+// ComputeGardenNamespace returns the name of the namespace belonging to the given seed in the Garden cluster.
+func ComputeGardenNamespace(seedName string) string {
+	return fmt.Sprintf("seed-%s", seedName)
+}
+
 // determineClusterIdentity determines the identity of a cluster, in cases where the identity was
 // created manually or the Seed was created as Shoot, and later registered as Seed and already has
 // an identity, it should not be changed.
@@ -1183,13 +1188,11 @@ func handleIngressDNSEntry(ctx context.Context, c kubernetes.Interface, chartApp
 		values.Targets = []string{loadBalancerAddress}
 	}
 
-	dnsEntry := dns.NewDNSEntry(
-		values,
-		v1beta1constants.GardenNamespace,
-		chartApplier,
-		charts.Path,
+	dnsEntry := dns.NewEntry(
 		seedLogger,
 		c.Client(),
+		v1beta1constants.GardenNamespace,
+		values,
 		nil,
 	)
 

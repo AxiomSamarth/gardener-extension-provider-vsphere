@@ -1,15 +1,14 @@
 module github.com/gardener/gardener-extension-provider-vsphere
 
-go 1.15
+go 1.16
 
 require (
 	github.com/ahmetb/gen-crd-api-reference-docs v0.2.0
 	github.com/coreos/go-systemd/v22 v22.1.0
 	github.com/gardener/etcd-druid v0.3.0
-	github.com/gardener/gardener v1.19.0
+	github.com/gardener/gardener v1.19.1-0.20210326063653-31a039299d1e
 	github.com/gardener/machine-controller-manager v0.37.0
 	github.com/go-logr/logr v0.3.0
-	github.com/gobuffalo/packr/v2 v2.8.1
 	github.com/golang/mock v1.5.0
 	github.com/google/uuid v1.1.2
 	github.com/onsi/ginkgo v1.14.1

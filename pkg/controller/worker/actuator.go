@@ -32,7 +32,7 @@ import (
 
 	apisvsphere "github.com/gardener/gardener-extension-provider-vsphere/pkg/apis/vsphere"
 	"github.com/gardener/gardener-extension-provider-vsphere/pkg/apis/vsphere/helper"
-	"github.com/gardener/gardener-extension-provider-vsphere/pkg/imagevector"
+	"github.com/gardener/gardener-extension-provider-vsphere/charts"
 	"github.com/gardener/gardener-extension-provider-vsphere/pkg/vsphere"
 )
 
@@ -53,7 +53,7 @@ func NewActuator() worker.Actuator {
 		vsphere.MachineControllerManagerName,
 		mcmChart,
 		mcmShootChart,
-		imagevector.ImageVector(),
+		charts.ImageVector(),
 		extensionscontroller.ChartRendererFactoryFunc(util.NewChartRendererForShoot),
 	)
 }
